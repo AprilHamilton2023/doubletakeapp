@@ -2,7 +2,7 @@ import React from 'react';
 
 function AboutUsPage(props) {
   return (
-    <div>A little info about us.</div>
+    <div>We are hear to make your life as a student easier.</div>
   );
 }
 

@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "ctp_user",
-    "password": "ctp_pass",
-    "database": "app2021_development",
+    "username": "Sumaiah",
+    "password": "1234",
+    "database": "doubletake",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
