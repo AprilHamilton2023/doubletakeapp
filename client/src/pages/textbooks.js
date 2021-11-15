@@ -33,8 +33,16 @@ class Textbooks extends React.Component {
                     <Form.Control type="text" placeholder="Enter the auther name here" />
                 </Form.Group>
                 <Form.Group className="mb-3">
+                    <Form.Label>Edition</Form.Label>
+                    <Form.Control type="text" placeholder="Enter the edition number here" />
+                </Form.Group>
+                <Form.Group className="mb-3">
                     <Form.Label>Course Name</Form.Label>
                     <Form.Control inline type="text" placeholder="Which coure is this book for?" />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <Form.Label>Course Code</Form.Label>
+                    <Form.Control inline type="text" placeholder="What is the coure's code for this book?" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Price</Form.Label>
