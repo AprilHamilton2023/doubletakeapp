@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap'
 
 function Post({ content, createdAt, id }) {
   return (
@@ -9,6 +10,7 @@ function Post({ content, createdAt, id }) {
           <Link to={"/posts/"+id}>{ content }</Link>
         </div>
         <div className="card-footer small text-muted text-right">
+          <Button type="delete" onClick={}> Delete Post </Button>
           { createdAt }
         </div>
       </div>

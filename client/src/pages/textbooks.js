@@ -5,9 +5,45 @@ import Textbook from '../components/Textbook'
 class Textbooks extends React.Component {
     state = {
         textbooks: [],
-        loading: true
+        loading: true,
+        error: false,
+        content:'',
     }
 
+    contentChanged = (event) => {
+        this.setState({
+            content: event.target.value
+        })
+    }
+
+    saveTextbook = (event) =>{
+        console.log(event.currentTarget)
+        fetch("api/textbooks", {
+            method: "POST",
+            credentials: 'include',
+            headers: {
+                'content-Type' : 'application/json'
+            },
+            body: JSON.stringify({content: this.state.content})
+        })
+        .then( res => {
+            if(res.ok){
+                return res.json()
+            }
+
+            throw new Error('Content Validation')
+        })
+        .then(post => {
+            this.setState({
+                success: true,
+            });
+        })
+        .catch(err => {
+            this.setState({
+                error: true,
+            })
+        })
+    }
     componentDidMount(){
         console.log("Textbooks mounted")
         fetch("/api/textbooks")
@@ -20,9 +56,19 @@ class Textbooks extends React.Component {
         })
     }
     render(){
+        let errorMesssage = null;
+        if(this.state.error){
+            errorMesssage = (
+                <div className="alert alert-danger">
+                    "There was an error saving the textbook"
+                </div>
+            )
+        }
+
         return(
         <>
         <div className="form">
+            {errorMesssage}
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Title</Form.Label>
@@ -52,7 +98,7 @@ class Textbooks extends React.Component {
                 <Form.Check inline name="neworused" label="Used" type="radio" id="neworused"/>
                 
                 <br/>
-                <Button type="submit" >Sell TextBook</Button>
+                <Button type="submit" onClick={this.saveTextbook} >Sell TextBook</Button>
             </Form>
         </div>
         <div>

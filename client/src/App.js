@@ -21,7 +21,11 @@ function Navigation(props) {
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark shadow mb-3">
       <Link className="navbar-brand" to="/">Double Take</Link>
       <ul className="navbar-nav mr-auto">
-       
+      <li className="nav-item">
+          <NavLink className="nav-link" exact to="/posts/new">
+            Post Update
+          </NavLink>
+        </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/textbooks">
             Textbooks
@@ -34,7 +38,7 @@ function Navigation(props) {
         </li>
         <li className="nav-item">
           <NavLink className="nav-link" exact to="/mentors">
-            Mentorship
+            Tutoring
           </NavLink>
         </li>
         <li className="nav-item">
