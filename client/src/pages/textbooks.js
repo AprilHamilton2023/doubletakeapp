@@ -7,7 +7,12 @@ class Textbooks extends React.Component {
         textbooks: [],
         loading: true,
         error: false,
-        content:'',
+        content:{
+            title: '',
+            course_name: '',
+            edition: '',
+            price: '',
+        },
     }
 
     contentChanged = (event) => {
@@ -15,9 +20,17 @@ class Textbooks extends React.Component {
             content: event.target.value
         })
     }
+    titleChanged = (event) => {
+        console.log('The textbook title has changed to: ' + event.target.value)
+        let temp_obj = this.state.content
+        temp_obj.title = event.target.value
+        this.setState({
+            content:temp_obj
+        })
+    }
 
     saveTextbook = (event) =>{
-        console.log(event.currentTarget)
+        console.log(this.state.content)
         fetch("api/textbooks", {
             method: "POST",
             credentials: 'include',
@@ -45,15 +58,15 @@ class Textbooks extends React.Component {
         })
     }
     componentDidMount(){
-        console.log("Textbooks mounted")
-        fetch("/api/textbooks")
-        .then(res => res.json())
-        .then(textbooks => {
-            this.setState({
-                loading : false,
-                textbooks: textbooks.map((p,ii) => <Textbook {...p} key={ii} />)
-            })
-        })
+        // console.log("Textbooks mounted")
+        // fetch("/api/textbooks")
+        // .then(res => res.json())
+        // .then(textbooks => {
+        //     this.setState({
+        //         loading : false,
+        //         textbooks: textbooks.map((p,ii) => <Textbook {...p} key={ii} />)
+        //     })
+        // })
     }
     render(){
         let errorMesssage = null;
@@ -72,7 +85,7 @@ class Textbooks extends React.Component {
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="text" placeholder="Enter the textbook title here" />
+                    <Form.Control type="text" placeholder="Enter the textbook title here" onChange={this.titleChanged} />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Author</Form.Label>
@@ -98,7 +111,7 @@ class Textbooks extends React.Component {
                 <Form.Check inline name="neworused" label="Used" type="radio" id="neworused"/>
                 
                 <br/>
-                <Button type="submit" onClick={this.saveTextbook} >Sell TextBook</Button>
+                <Button className="btn btn-primary" onClick={this.saveTextbook} >Sell TextBook</Button>
             </Form>
         </div>
         <div>
