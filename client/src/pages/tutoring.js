@@ -26,19 +26,19 @@ class Tutoring extends React.Component {
             <Form>
                 <Form.Group className="mb-3">
                     <Form.Label>Your Name</Form.Label>
-                    <Form.Control type="text" placeholder="Enter the your name here" />
+                    <Form.Control type="text" placeholder="Enter your name" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Course Name</Form.Label>
-                    <Form.Control inline type="text" placeholder="Enter the coure you need tutoring for" />
+                    <Form.Control inline type="text" placeholder="Enter course name" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Course Code</Form.Label>
-                    <Form.Control inline type="text" placeholder="What is the coure's code?" />
+                    <Form.Control inline type="text" placeholder="Enter course code" />
                 </Form.Group>
                 <Form.Group className="mb-3">
                     <Form.Label>Subject</Form.Label>
-                    <Form.Control inline type="text" placeholder="What is the coure's subjuct you need tutoring in?" />
+                    <Form.Control inline type="text" placeholder="Enter course subject" />
                 </Form.Group>
                 <Dropdown>
                  <Dropdown.Toggle variant="success" id="dropdown-basic">
